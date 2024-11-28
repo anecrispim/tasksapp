@@ -5,7 +5,7 @@ class Task {
   final String title;
   final String description;
   final String priority;
-  bool isCompleted; // Novo campo para o status de conclusão
+  bool isCompleted;
 
   Task({
     required this.title,
@@ -35,39 +35,36 @@ class _TaskScreenState extends State<TaskScreen> {
     setState(() {
       task.isCompleted = !task.isCompleted;
       if (task.isCompleted) {
-        widget.onMoveToCompleted(task); // Mover para concluídas
-        // Exibir a mensagem de tarefa concluída
+        widget.onMoveToCompleted(task);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Tarefa "${task.title}" concluída!'),
-            duration: Duration(seconds: 2), // Duração de 2 segundos
+            duration: Duration(seconds: 2),
           ),
         );
       } else {
-        widget.onUpdateTask(task); // Atualizar status de tarefa
+        widget.onUpdateTask(task);
       }
     });
   }
 
-  // Função para navegar para a tela de adicionar tarefa
   void _navigateToAddTask() async {
     final Task? newTask = await Navigator.push<Task?>(
       context,
       MaterialPageRoute(
-        builder: (context) => AddTaskScreen(), // Tela de adicionar tarefa
+        builder: (context) => AddTaskScreen(),
       ),
     );
 
     if (newTask != null) {
       setState(() {
-        widget.tasks.add(newTask); // Adiciona a tarefa criada à lista
+        widget.tasks.add(newTask);
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    // Filtrando tarefas não concluídas
     final activeTasks = widget.tasks.where((task) => !task.isCompleted).toList();
 
     return Scaffold(
@@ -103,7 +100,7 @@ class _TaskScreenState extends State<TaskScreen> {
               },
             ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _navigateToAddTask, // Chama a função para navegar para a tela de adicionar tarefa
+        onPressed: _navigateToAddTask,
         child: Icon(Icons.add),
         tooltip: 'Adicionar nova tarefa',
       ),

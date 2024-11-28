@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'TaskScreen.dart'; // Tela de tarefas
-import 'CompletedTaskScreen.dart'; // Tela de progresso
+import 'CompletedTaskScreen.dart'; // Tela de tarefas concluídas
 
 class HomeScreen extends StatefulWidget {
   @override

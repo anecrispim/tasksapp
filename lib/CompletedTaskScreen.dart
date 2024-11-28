@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'TaskScreen.dart'; // Modelo de tarefa
+import 'TaskScreen.dart';
 
 class CompletedTasksScreen extends StatelessWidget {
   final List<Task> completedTasks;

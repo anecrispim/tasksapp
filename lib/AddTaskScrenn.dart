@@ -10,10 +10,10 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   final _titleController = TextEditingController();
   final _descriptionController = TextEditingController();
   String _priority = 'Média';
-  bool _isSaving = false; // Flag para evitar múltiplos cliques
+  bool _isSaving = false;
 
   void _saveTask() {
-    if (_isSaving) return; // Impede múltiplos cliques
+    if (_isSaving) return;
     if (_titleController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('O título é obrigatório!')),
@@ -32,7 +32,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
       priority: _priority,
     );
 
-    // Retorna a tarefa criada e desbloqueia o botão após o pop
     Navigator.pop(context, newTask);
   }
 
@@ -44,7 +43,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context); // Retorna à tela anterior sem salvar
+            Navigator.pop(context);
           },
         ),
       ),
@@ -80,7 +79,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
             ),
             Spacer(),
             ElevatedButton(
-              onPressed: _isSaving ? null : _saveTask, // Desativa o botão se estiver salvando
+              onPressed: _isSaving ? null : _saveTask,
               child: Text('Salvar Tarefa'),
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(double.infinity, 48),
