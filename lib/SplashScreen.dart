@@ -22,7 +22,11 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Lottie.asset('assets/animation.json'),
+        child: Lottie.asset(
+          'assets/animation.json',
+          width: 200,
+          height: 200,
+        ),
       ),
     );
   }
